@@ -1,0 +1,13 @@
+Package: R.graphics
+Version: 0.44.0
+Depends: R (>= 2.10.0), R.methodsS3 (>= 1.2.1), R.oo (>= 1.7.4), R.utils (>= 1.5.8), R.basic (>= 0.50.0), R.colors (>= 0.5.5)
+Imports: R.utils (>= 1.5.8)
+Suggests: R.io (>= 0.38.0), tcltk
+Date: 2013-02-07
+Title: [R] Class Library - Graphics classes
+Author: Henrik Bengtsson <henrikb@braju.com>
+Maintainer: Henrik Bengtsson <henrikb@braju.com>
+Description: Methods to open and close figures, save plots to file etc.
+License: LGPL (>= 2.1)
+URL: http://www.braju.com/R/
+LazyLoad: TRUE

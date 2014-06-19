@@ -1,0 +1,341 @@
+Package: R.graphics
+===================
+
+Version: 0.44.0 [2013-02-07]
+o Package passes R CMD check on R v2.15.2 with 1 WARNING.
+o Updated package to have a NAMESPACE.
+o BUG FIX: Device$setStyle() no longer tries to set graphical 
+  parameter 'tmag', because it is now obselete in R.
+o BUG FIX: Now Device$get/setPlotParameters() uses the global 
+  environment to store the parameters.
+
+
+Version: 0.43.0 [2010-11-28]
+o Package passes R CMD check on R v2.12.0.
+o Using packageStartupMessage() instead of cat().
+o Updated to x.y.z version format.
+o Renamed HISTORY to NEWS.
+o BUG FIX: set() of Device tried to infer the default width and height
+  from the default arguments of the device function.  However, such
+  defaults has been moved to options of the grDevices package.
+
+
+Version: 0.42 [2007-05-09]
+o Package now passes R CMD check on R v2.5.0.
+
+
+Version: 0.41 [2006-09-12]
+o Added package 'grDevices' as a package this one depends on.  This
+  is required for package without a namespace in the upcoming 
+  R v2.4.0 release.
+
+
+Version: 0.40 [2006-01-21]
+o Package passes R CMD check without errors and warnings.
+o Added Rdoc comments to all new methods.  
+
+
+Version: 0.39 [2005-12-05]
+o Added static method open() to Device.  The methods open() and print()
+  share newly added method getParameter() for calculating device-specific
+  parameters.
+
+
+Version: 0.38 [2005-03-07]
+o Added static method findPngDevice() to Device.
+
+
+Version: 0.37 [2005-02-25]
+o Package passes R CMD check without warnings. 
+o Moved all BitmapImage classes to the new R.image package.
+
+
+Version: 0.36 [2005-01-18]
+o Added test for Device$print() when calculating relative width, 
+  e.g. "100%!", when height=0.
+o BUG FIX: From R v2.0.0, Device$print("foo.eps") gave error "invalid
+  graphics state". This is now corrected.
+
+
+Version: 0.35 [2004-10-23]
+o getRGBorHSV() in Colors generated "NAs are not allowed in subscripted 
+  assignments" error in R v2.0.0. Corrected.
+
+
+Version: 0.34 [2004-10-21]
+o as.RGBImage() of the RGBImage class now have a 'coefs' argument.
+  This allows extraction of color modified RGB images.
+o Added more help pages with more examples.
+o Removed obsolete Legend class.
+o Added trial methods getDimensions() and getAspectRatio().
+o Device$print("xxx.eps") forgot to print with paper="special".
+  This would *not* rescale the background (for instance if forced to 
+  "white"), but only the bounding box. This would result in a figure
+  that overlapped the text in a LaTeX document.
+
+
+Version: 0.33 [2004-04-21]
+o Added get-, set- and resetOptions(). This will also fix the R v1.9.0
+  problem where they've "removed" .PostScript.Options, which I previously
+  relied on. 
+o BUG FIX: The left and bottom click-outside-margin rules were incorrect
+  for plotSymbols(interactive=TRUE) in Device.
+
+
+Version: 0.32 [2003/12/23]
+o Added set- and getPrintPath(), which is used by print(), to the
+  Device class. Thus, it is possible to set a default output
+  path for Device$print().
+o Robustness fix: The 'path' argument had to contain a trailing "/" for
+  BitmapImage$read() to work. Fixed.
+
+
+Version: 0.31 [2003/11/21]
+o Rewrote some of the methods in Colors to make use of the new
+  Color and ColorFilter classes in the new R.colors package. The
+  intension is to phase-out the Colors class.
+
+
+Version: 0.30 [2003/10/19]
+o Added support to read gzip'ed PPM files, e.g. foo.pgm.gz, with
+  BitmapImage$read(). This is convenient since PPM does not support 
+  compression otherwise.
+o Removed obsolete class Legend. Use legend() instead.
+
+
+Version: 0.29 [2003/07/18]
+o Added a Device$choose(), which brings up a window with a list of
+  all open figures and by selecting anyone that figure will be activated
+  and brought to front.
+
+
+Version: 0.28 [2003/07/07]
+o Removed the obsolete XYZCImage and ColorMap classes.
+o Rd BUG FIX: When the new @synopsis tag of Rdoc comments was used the
+  \usage{} of eps() contained a '%' which means a comment in Rd format
+  resulting in unbalanced curly brackets. Rdoc in R.oo was corrected
+  accordingly.
+
+
+Version: 0.27 [2003/05/04]
+o Now setPlotParameters() opens a new window if non is currently open.
+  This solves the bugs that the plot examples in com.braju.sma do not
+  work anymore.
+
+
+Version: 0.26 [2003/04/18]
+o BUG FIX: Device$print() and Device$set() did not calculate the width
+  correclty if it was given as a percentage of the default width, e.g.
+  "200%". It became the percentage of the height instead.
+o BUG FIX: Device$print() and Device$set() did not accept numerical
+  values for width, height and pointsize. If tried, the default value
+  would be used instead.
+
+
+Version: 0.25 [2003/03/10]
+o Updated readPPM() for BitmapImage classes to be more memory efficient.
+  This is done by reading in the data in blocks and convert block by block
+  to integers. Images that were too big to read before, can now be read.
+o writePPM() for MonochromeImage was not implemented for ascii=TRUE. Also, 
+  the data is written row by row (for ASCII) to save memory. Writing binary
+  data block by block is still to come. 
+o Created a special version of image() for GrayImage to save memory. The
+  generic implementation found in BitmapImage is less memory efficient.
+o Added method getColorMap() to BitmapImage to get all colors currently used
+  in the BitmapImage. It should be reimplemented in each subclass to safe
+  memory. 
+o Made the constructor of GrayImage more memory efficient by not doing
+  modulo maxValue if it is not necessary. 
+
+
+Version: 0.24 [2003/02/23]
+o Updated set() and print() in the Device class to be more clever about
+  different types of values of the height and width arguments.
+o Changed a one occurances of class(x) to data.class(x) in class XYZCImage.
+
+
+Version: 0.23 [2003/01/17]
+o Added getMouseClick(), which return the (standardize [0,1]x[0,1] or
+  plot) coordinates of one or several mouse click similar to locator(),
+  but here the coordinates can also be relative to the window (the figure
+  region) and not only to the plot region.
+o Added bringToTop(), which basically just call bringToTop(), but got 
+  somewhat fancier error messages.
+
+
+Version: 0.22 [2003/01/10]
+o BUG FIX: If the image to be converter was not in the current directory
+  the temporary PPM file was given an invalid pathname. Added a simple
+  call to basename() to fix this.
+o Now read() in BitmapImage checks if a file exists or not before trying
+  to read it.
+o Now readPPM() accept binary files with maxValue > 255 too. According to
+  the file format definitions maxValue should be forced to 255 if the
+  file is binary, but for instance ImageMagick's convert converts a 16-bit
+  TIFF file to a 16-bit binary PGM file.
+o Now getColors() of the GrayImage class support NA values.
+o BUG FIX: The internal color map used by image() of class BitmapImage was
+  not minimal in size due to a typo.
+o BUG FIX: Using numeric values for the width and height arguments of
+  Device$print() was broken due to the changes in previous version.
+o BUG FIX: BitmapImage$read() was broken when non-builtin 
+  file formats were to be read. When trying to call the external image 
+  converter an error was generated, because the toUpper() function has 
+  been removed. Furthermore, now it is possible to specify the external
+  image converter software to be used or a wrapper function that calls 
+  an external image converter by setting the the option "imageConverter". 
+  See help(read.BitmapImage) for more information.
+o Added the static method getRgbFromWavelength() to the Colors class. This
+  method transforms wavelengths into (R,G,B) values. Note that this is only
+  a subjective mapping and there is no physical true mapping.
+
+
+Version: 0.21 [2002/12/07]
+o Now both argument 'width' and 'height' of Device$print() can be
+  specifying a relative (percentage) size at the same time. It is not a
+  percentage of the other axis (as it used to be), but the percentage of
+  the default size. To specify the relative size to the other axis one
+  has to add a "!", e.g. width="100%!", height="50%" to make the height
+  50% of the default device size and the width the same as the height. 
+
+
+Version: 0.21 [2002/11/11]
+o Device$plotSymbols() now also has an interactive mode (interactive=TRUE)
+  where one can pick character to a list by click on them. The interactive
+  mode will only take place if R is run in interactive mode.
+o Moved static methods plotSymbols() and setStyle() in the Plots class
+  to the Device class. The idea is to phase out the Plots class, because
+  the rational for it was basically the same as for the Device class.
+o Added static method Device$plotRegions() for clarifying the different
+  regions: 1) outer margin region, 2) figure region and 3) plot region.
+o Updated the gif() command to 1) not create temporary variables in 
+  .GlobalEnv. It now also convert to a tempory gif file and first then
+  rename that to the wanted filename. This means that if the filename
+  does not have a *.gif extension a gif file will still be generated.
+  Finally, the option "imagemagick" contains named field where one of 
+  them can be "convert" for specifying the path to the convert command.
+  Note that on WinXP Pro there is already a convert command in the path.
+
+
+Version: 0.20 [2002/10/23]
+o Device$print() is now keeping the proportion of the image size if
+  only one of the arguments 'width' and 'height' is given.
+o Made the package compatible with the new Rx.oo core.
+
+
+Version: 0.19 [2002/10/09]
+o Added toMonochrome() and toGrayScale() to the classes MonochromImage,
+  GrayImage and RGBImage.
+
+
+Version: 0.18 [2002/08/23]
+o Static methods getRGB() and getHSV() in Colors now return NA's where 
+  its corresponding input values are NA's. Plotting with NA colors does
+  in most plotting function plot with a transparent color or with the
+  background color.
+
+
+Version: 0.17 [2002/07/18]
+o From the former RGBImage class a hierarchy of image classes has been
+  created. The root image class is BitmapImage, which is abstract but has
+  static methods. The former RGBImage class and the new GrayImage class 
+  inherits from this class. The MonochromeImage class inherits from the
+  GrayImage class. All classes have "as"-methods to convert an objects 
+  into one of the other image classes.
+  Added support to read and write PBM and PGM image files too. Even more
+  interesting is that, when reading an unknown image format, ImageMagick's
+  convert is called to first convert the image to a temporary PPM file, 
+  which is then read by  readPPM(). This means that if one has 'convert' 
+  installed you can basically read any image formats. If ImageMagick is
+  not installed an "image format is not recognized" error is thrown.
+
+
+Version: 0.16 [2002/06/28]
+o RGBImage: Added support to write (not read) in BMP, EPS, JPG, PNG format.
+  Added support to read and write Portable PixMap (PPM) files in both
+  ASCII and binary formats. 
+  It seems that the bmp() driver is a little bit buggy when there are too
+  many colors in the image so don't expect correct BMP files in all cases. 
+  Why, is still to be investigated.
+  Added method image() to the RGBImage class 
+  which makes use of image.matrix() in R.base. image() is much better than
+  plot(), which tends to add space between pixels.
+o BUG FIX: When R CMD check is runned .PlotParameters is not correctly
+  created. Added a workaround in set-/getPlotParameter().
+
+
+Version: 0.15 [2002/05/31]
+o Added static methods rgbToColors(), invert() and getMonochrome() to
+  class Colors.
+
+
+Version: 0.14 [2002/05/26]
+o Package now passed R CMD check with 3 warnings (and some "Signal 127"???).
+o Now also the XYZCImage constructor accepts functions.
+o Minimized the number of warnings when loading packages.
+
+
+Version: 0.13 [2002/05/07]
+o BUG FIX: getHeatColors(), getTopoColors(), getTerrainColors(),
+  getCyanMagentaColors() and getRainbowColors() always returned the last
+  value as NA. This was due to an internal out-of-range array index.
+o Added getRed(), getGreen() and getBlue() to class Colors for simplicity.
+
+
+Version: 0.12 [2002/04/21]
+o BUG FIX: Internal bug fix in static method getGray() in class Colors.
+
+
+Version: 0.11 [2002/04/07]
+o Updated plotSymbols() in Plots to produce nicer numbering on the axis.
+  In combination with the new intToOct() function in R.base it is easy
+  identify the wanted octal code, e.g. 252 -> "\374".
+
+
+Version: 0.10 [2002/04/03]
+o Added support for (R.io) File object filename specifications for the
+  Device and RGBImage I/O methods, e.g. Device$print().
+o Added colorToRGB(), getHeatColors(), getTopoColors(), getTerrainColors(),
+  getCyanMagentaColors(), and getRainbowColors() to class Colors. All the
+  color generator methods now return an object colors with the same 
+  dimension as the (first) input argument.
+
+
+Version: 0.9 [2002/03/30]
+o Made the package a little bit less depending on package R.io.
+o BUG FIX: Made class XYZCImage work with Rdoc$buildClass().
+
+
+Version: 0.8 [2002/03/13]
+o Added from.data.frame() to class XYZCImage. Also, take a look at that
+  help file, because it demonstrates how one can estimate thin-plate
+  splines using the package gss. The example code generates some nice
+  2d and 3d plots.
+
+
+Version: 0.7 [2002/01/24]
+o Added putAuthor(), putDataset() and putTimestamp() to class Device.
+o Updated print.Device() to support widths and heights like width="50%".
+
+
+Version: 0.6 [2002/01/18]
+o subplots() is now by default calling subplots.Plots().
+o If a vector/matrix is given to subplots, the *length* of it
+  will be used as the wanted number of subplots.
+
+
+Version: 0.5 [2002/01/13]
+o Added subplots.Plots for more easily generated subplots. 
+
+
+Version: 0.4 [2001/09/20]
+
+
+Version: 0.3 [2001/07/24]
+
+
+Version: 0.2 [2001/05/06]
+
+
+Version: 0.1 [2001/05/04]
+o First version.
