@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!-- Report writing started on  Tue Jan 15 14:31:10 2008 -->
+<html>
+ <head>
+  <title>Reporter Example</title>
+  <link media="screen" type="text/css" rel="StyleSheet" href="figures//R.io-HtmlReporter.css">
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+  <meta name="Author" content="http://www.braju.com/R/">
+ </head>
+ <body>
+  <br>
+  <center>
+   <big>
+    <big>
+     <big>
+      <strong>Reporter Example</strong>
+      <br>
+     </big>
+    </big>
+http://www.braju.com/R/    <br>
+Tue Jan 15 14:31:10 2008    <br>
+   </big>
+  </center>
+  <br>
+  <br>
+  <a name="Some simple list examples"></a>
+  <h2>1. Some simple list examples</h2>
+<!-- ========== List  1  ========== -->
+  <ol>
+   <li>numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</li>
+   <li>letters: a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z</li>
+  </ol>
+<!-- ========== List  1  ========== -->
+<!-- ========== List  2  ========== -->
+  <ul>
+   <li>numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</li>
+   <li>letters: a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z</li>
+  </ul>
+<!-- ========== List  2  ========== -->
+  <a name="Mathematical equation"></a>
+  <h2>2. Mathematical equation</h2>
+  <p>The Reporter has special functions for writing mathematical equations, which should be written using LaTeX style. The HTMLReporter class will try to translate some of the LaTeX symbols into special HTML symbol (which some browser might not support). If the symbol/command is unknown it is written in verbatim.</p>
+  <center>\alpha, \beta, \gamma, \delta, \epsilon, \varepsilon, \zeta, \eta, \theta, \iota, \kappa, \lambda, \mu, \nu, \xi, \pi, \rho, \sigma, \tau, \upsilon, \phi, \chi, \psi, \omega
+   <table border="0" width="90%" class="Equation">
+    <tr valign="bottom" class="Equation">
+     <td align="center" class="Equation">
+&alpha;, &beta;, &gamma;, &delta;, &epsilon;, &epsilon;, &zeta;, &eta;, &theta;, &iota;, &kappa;, &lambda;, &mu;, &nu;, &xi;, &pi;, &rho;, &sigma;, &tau;, &upsilon;, &phi;, &chi;, &psi;, &omega;     </td>
+     <td align="right" class="EquationNumber">
+(1)     </td>
+    </tr>
+   </table>
+  </center>
+<!-- ========== Equation  1  ========== -->
+  <center>\Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Upsilon, \Phi, \Omega
+   <table border="0" width="90%" class="Equation">
+    <tr valign="bottom" class="Equation">
+     <td align="center" class="Equation">
+&Gamma;, &Delta;, &Theta;, &Lambda;, &Xi;, &Pi;, &Sigma;, &Upsilon;, &Phi;, &Omega;     </td>
+     <td align="right" class="EquationNumber">
+(2)     </td>
+    </tr>
+   </table>
+  </center>
+<!-- ========== Equation  2  ========== -->
+  <center>A \leftarrow B \leftrightarrow C \rightarrow D \uparrow E \downarrow E
+   <table border="0" width="90%" class="Equation">
+    <tr valign="bottom" class="Equation">
+     <td align="center" class="Equation">
+A &larr; B &harr; C &rarr; D &uarr; E &darr; E     </td>
+     <td align="right" class="EquationNumber">
+(3)     </td>
+    </tr>
+   </table>
+  </center>
+<!-- ========== Equation  3  ========== -->
+  <center>A \leq B \geq C \neq D \approx E
+   <table border="0" width="90%" class="Equation">
+    <tr valign="bottom" class="Equation">
+     <td align="center" class="Equation">
+A &le; B &ge; C &ne; D &asymp; E     </td>
+     <td align="right" class="EquationNumber">
+(4)     </td>
+    </tr>
+   </table>
+  </center>
+<!-- ========== Equation  4  ========== -->
+  <a name="From the examples of persp() and contour()"></a>
+  <h2>3. From the examples of persp() and contour()</h2>
+  <a name="The Obligatory Mathematical surface. Rotated sinc function."></a>
+  <h2>3.1. The Obligatory Mathematical surface. Rotated sinc function.</h2>
+  <center>f(x,y) = 10 \cdot \frac{sin(\sqrt(x^2+y^2))}{\sqrt(x^2+y^2)}
+   <table border="0" width="90%" class="Equation">
+    <tr valign="bottom" class="Equation">
+     <td align="center" class="Equation">
+f(x,y) = 10 &bull; \frac{sin(&radic;(x<sup>2</sup>+y<sup>2</sup>))}{&radic;(x<sup>2</sup>+y<sup>2</sup>)}     </td>
+     <td align="right" class="EquationNumber">
+(5)     </td>
+    </tr>
+   </table>
+  </center>
+<!-- ========== Equation  5  ========== -->
